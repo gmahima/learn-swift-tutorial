@@ -17,3 +17,5 @@ var str2 = """
 """
 var pi = 3.14
 var isGood = true
+
+var stt3 = "yo hi there \(str) \(str2) \(pi)"
