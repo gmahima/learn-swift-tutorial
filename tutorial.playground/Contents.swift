@@ -5,3 +5,13 @@ greeting = "yo"
 var age = 38
 var population  = 8_000_000
 
+var str = """
+    hey
+    tger
+    dgsf
+"""
+var str2 = """
+    hasdf\
+    asdf\
+    asdf
+"""
