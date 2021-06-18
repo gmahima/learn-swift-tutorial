@@ -15,3 +15,5 @@ var str2 = """
     asdf\
     asdf
 """
+var pi = 3.14
+var isGood = true
