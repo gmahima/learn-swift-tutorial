@@ -130,3 +130,24 @@ let arr = ["a", "b", "c", "d"]
 for a in 0..<arr.count {
     print(arr[a])
 }
+
+repeat{
+    print("this is false")
+} while false
+
+outer: for i in 1...10 {
+    for j in 1...10 {
+        if((i*j) % 2) != 0 {
+            continue outer
+//            continue
+        }
+        print ("\(i) x \(j) = \(i*j)")
+        if (i*j == 50) {
+            break outer
+        }
+        
+        
+    }
+    print("-----------")
+}
+print("-----------")
