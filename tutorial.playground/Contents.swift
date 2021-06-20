@@ -73,3 +73,38 @@ enum Planet: Int {
 var earth = Planet(rawValue: 2)
 var mercurey = Planet(rawValue: 1)
 // enum witr raw vals cant have assocaiated vals
+
+//let a = 2
+//let b = 5.01
+////let c = a + b
+//print( type(of:a))
+//a == b
+//a > b
+//if(a+b > 2) {
+//    print("eys")
+//}
+if 1+2 == 3 {
+    print("yay")
+}
+var a = 5
+let b = 5
+
+switch a {
+case 5 :a += 1
+print("yo")
+fallthrough
+case 6 : print("a = 6")
+
+default: print("nothing")
+}
+a = 2
+switch a {
+case 0..<5:
+    print("a")
+    fallthrough
+    
+case 0...2:
+    print("b")
+default:
+    print(2)
+}
