@@ -292,14 +292,33 @@ travel2 {
 }
 
 func travel3 (speed: Int) -> (String) -> String {
-    let who = "We"
+    var who = 0
     return {
-        "\(who) are going to \($0) at \(speed)kmph"
+        who += 1
+        return "\(who) are going to \($0) at \(speed)kmph"
     }
 }
 
 let closure = travel3(speed: 2)
 
 
-let cloRes = closure("Hawaii") // closure is called here, but it still has access to speed, who which are defined in travel3, where the closure was defined! So functions have access to the values present in the scope they were defined in!!! In JS too!
-print(cloRes)
+let cloRes = closure("Hawaii") // closure is called here, but it still has access to speed, who which are defined in travel3, where the closure was defined! So functions have access to read,modify the values present in the scope they were defined in!!! In JS too!
+closure("Tokyo")
+travel3(speed: 400)("Taiwan")
+travel3(speed: 1000)("Seoul")
+travel3(speed: 1000)("Seoul")
+
+// closure's lexical scope consists of the variables at the time of their declaration.
+// at the time of declaration, who = 0. But if you store the closure in a var and call it multiple times, it's lex. scope will be the same. If you call the parent function, in the scope, who's val will be 1.
+// each closure has the same function body, but different lexical environments.
+
+func addX (x: Int) -> (Int) -> Int {
+    return {
+        (y: Int) -> Int in return x + y
+    }
+}
+
+let add5 = addX(x: 5)
+let add10 = addX(x: 10)
+add5(5)
+add10(25)
