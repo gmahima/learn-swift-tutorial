@@ -284,3 +284,22 @@ print(
 //        "ki veldama? "
 //    }
 //) error
+func travel2 (action: (Int, String) -> String) -> String {
+    return "\(action(60, "Hawaii")) Yay!!"
+}
+travel2 {
+    "We are going to \($1) at \($0)kmph"
+}
+
+func travel3 (speed: Int) -> (String) -> String {
+    let who = "We"
+    return {
+        "\(who) are going to \($0) at \(speed)kmph"
+    }
+}
+
+let closure = travel3(speed: 2)
+
+
+let cloRes = closure("Hawaii") // closure is called here, but it still has access to speed, who which are defined in travel3, where the closure was defined! So functions have access to the values present in the scope they were defined in!!! In JS too!
+print(cloRes)
