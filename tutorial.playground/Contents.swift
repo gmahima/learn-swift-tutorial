@@ -151,3 +151,105 @@ outer: for i in 1...10 {
     print("-----------")
 }
 print("-----------")
+//while 1 {
+//    print("test")
+//    break
+//}
+func printHelp () -> String {
+//    print("ill help ya")
+    return "there"
+}
+printHelp()
+
+func sq (num: Int) -> Int {
+    return (num * num)
+}
+print(sq(num: 8))
+
+func sayHello(to name: String) {
+    print("hey \(name)")
+}
+sayHello(to: "Super")
+func sayHello2(_ name: String) {
+    print("hey \(name)")
+}
+sayHello2("Taylor")
+
+func greet (to name: String, saying greeting: String = "hello there") {
+    print ("\(greeting) \(name)!")
+}
+greet(to: "Taylor")
+greet(to: "Taylor", saying: "Nice to meet you")
+
+
+func myPrint (message: String...) throws {
+    for m in message {
+        print (m, terminator: " - ")
+    }
+}
+do {
+    try myPrint(message: "hello! didnt see you ",  printHelp(), "come on")
+}
+catch {
+    print("caut")
+}
+
+
+enum PasswordError : Error {
+    case obvious
+}
+func setPassword (_ p: String = "password") throws -> (){
+    if(p == "password") {
+        throw PasswordError.obvious
+    }
+}
+
+do {
+    try setPassword()
+    print ("p set")
+}
+catch {
+    print("set a better one")
+}
+
+func double ( _ num: inout Int) {
+    num = num * 2
+}
+var asdf = 2
+double (&asdf)
+asdf
+func some (_ a : Int = 1) -> Bool {
+    if(a == 1) {
+        return false
+    }
+    return true
+}
+
+let driving = {
+    (place: String) in
+    print("im driving \(place)")
+}
+driving("home")
+
+let dr = {
+    (place: String, bool: Bool) -> String in
+    return place
+}
+
+dr("somewhere", true)
+
+func travel (time: Int , action: (_: String, _: Bool) -> String) -> String {
+    print("yee haw, \(time)")
+    print(action("Hawaii", true))
+    return ("done")
+}
+travel(time:2, action: dr)
+
+travel (time: 300) {
+    (place: String, really: Bool) -> String in
+    return ("\(place) + yoyo + \(really)")
+}
+
+let done = travel(time: 4000) {
+    (place: String, isTrue: Bool) -> String in return ("\(place) + interesting + \(isTrue)")
+}
