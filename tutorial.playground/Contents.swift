@@ -461,6 +461,10 @@ struct Cake {
         self.secretIngredient = secretIngredient
         self.name = name
     } //if you declaare something as private, you need to write a custom initializer, else it throws an error saying initializer inaccessible due to private protection level.
+    //from https://docs.swift.org/swift-book/LanguageGuide/AccessControl.html
+    // A default initializer has the same access level as the type it initializes, unless that type is defined as public. For a type that’s defined as public, the default initializer is considered internal. If you want a public type to be initializable with a no-argument initializer when used in another module, you must explicitly provide a public no-argument initializer yourself as part of the type’s definition.
+    
+    // since Cake struct has to initialize a private var, it is also private by default. We must use a custom initializer.
     func letOutSecret (_ name: String ) {
         if(name == self.name) {
             print("The secret ingredient is \(secretIngredient)")
