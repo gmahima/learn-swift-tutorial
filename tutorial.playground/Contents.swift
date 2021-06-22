@@ -322,3 +322,151 @@ let add5 = addX(x: 5)
 let add10 = addX(x: 10)
 add5(5)
 add10(25)
+
+
+func visitPlaces() -> (String) -> Void {
+    var places = [String: Int]()
+    return {
+        places[$0, default: 0] += 1
+        let timesVisited = places[$0, default: 0]
+        print("Number of times I've visited \($0): \(timesVisited).")
+    }
+}
+let visit = visitPlaces()
+visit("London")
+visit("New York")
+visit("London")
+
+struct Sport {
+    var name : String  = "cricket"
+    var isOlympicSport: Bool = false
+    var olympicStatus : String {
+        if isOlympicSport {
+            return "\(name) is an olympic sport"
+        }
+        return "\(name) is not an olympic sport"
+    }
+}
+
+var tennis = Sport(name: "Tennis")
+tennis.name
+tennis.isOlympicSport
+tennis.olympicStatus
+tennis.name
+
+struct Progress {
+    var task: String = "lying around"
+    var progress: Int = 0 {
+        didSet (oldProgress) {
+            print("progress of \(task) changed from \(oldProgress) to \(progress)")
+        }
+    }
+}
+
+var running = Progress(task: "running")
+
+running.progress = 25
+running.progress = 50
+running.progress = 100
+
+struct City {
+    let name: String // if you give it a default value + let keyword, while creating an instance, you can't pass name as an argument. You can't modify it later either
+    var population: Int
+    func collectTaxes (currency: String) -> (amt: Int, currency: String) {
+        return (population*1000, currency)
+    }
+}
+
+var london = City(name: "London", population: 8_000_000)
+london.name
+london.collectTaxes(currency: "$")
+
+
+struct Person {
+    var name: String // cant use mutating func to change if let is used
+    mutating func changeName (newName: String = "Anonymous") {
+        name = newName
+    }
+}
+var kimNamJoon = Person(name: "namjoon")
+kimNamJoon.changeName(newName: "rm")
+kimNamJoon.name
+let jungKook = Person(name: "jk")
+//jungKook.changeName(newName: "muscle bunny")
+// error Cannot use mutating member on immutable value: 'jungKook' is a 'let' constant
+var str = "Dr. Chakravarti"
+
+str.hasPrefix("Dr.")
+str.append("i")
+var toys = ["Woody"]
+toys.append("Buzz")
+toys.count
+
+struct User {
+    var username: String
+    var greeting: String
+    
+    mutating func setUsername (username: String) {
+        self.username = username
+    }
+    init (customGreet greeting : String) {
+        self.greeting = greeting
+        username = "anonymous"
+        greetUser()
+    }
+    func greetUser () -> Void {
+        print("\(greeting) dear \(username)")
+    }
+    
+}
+var izuku = User(customGreet: "Ohio")
+izuku.setUsername(username: "@deku")
+izuku.greetUser()
+
+
+struct Ft {
+    init() {
+        print("creating ft")
+    }
+}
+
+struct Dude {
+    var name: String
+    lazy var tree = Ft()
+    init(_ name: String) {
+        self.name = name
+    }
+}
+var ochako = Dude("ochako")
+ochako.tree
+
+struct Student {
+    let name: String
+    static let teacher: String = "Erazer Head"
+    static var strength = 0
+    init(_ name: String) {
+        self.name = name
+        Student.strength += 1
+    }
+}
+var tokoyami = Student("tokoyami fumikage")
+var asui = Student("asui")
+Student.strength
+Student.teacher
+
+struct Cake {
+    private let secretIngredient: String
+    let name: String
+    init (secretIngredient: String, name: String) {
+        self.secretIngredient = secretIngredient
+        self.name = name
+    } //if you declaare something as private, you need to write a custom initializer, else it throws an error saying initializer inaccessible due to private protection level.
+    func letOutSecret (_ name: String ) {
+        if(name == self.name) {
+            print("The secret ingredient is \(secretIngredient)")
+        }
+    }
+}
+let myCake = Cake(secretIngredient: "Jaggery", name: "Levi")
+
+myCake.letOutSecret("Levi")
