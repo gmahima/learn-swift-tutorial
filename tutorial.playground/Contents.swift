@@ -1,16 +1,28 @@
 import UIKit
 
 
-//nil coalesing
+//optional chaining
 
-func user (_ id: Int) -> String? {
-    if(id == 1) {
-        return "Yaoyorozu"
-    }
-    else {
-        return nil
-    }
+var team7 = ["naruto", "sakura", "sasuke", "kakashi"]
+
+var first = team7.first?.uppercased()
+print(first) // Optional("NARUTO")
+
+var team700 = Array<String>()
+
+var first700 = team700.first?.uppercased()
+print(first700) // (nil)
+
+var inoShikaCho = ["Ino", "Shikamaru", "Chouji"]
+
+//var firIsc = inoShikaCho.first?.uppercased()
+//guard let firIsc = inoShikaCho.first?.uppercased() else {
+//
+//}
+//print(firstIsc) error can't find firstIsc in scope.
+
+var capIno:String = ""
+if let firIsc = inoShikaCho.first?.uppercased() {
+    capIno = firIsc
 }
-let x = user(24) ??  "Anonymous"
-let y = user(1) ?? "Anonymous"
-
+print(capIno)
