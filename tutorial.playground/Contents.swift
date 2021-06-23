@@ -20,6 +20,9 @@ extension Identifiable {
 
 struct User: Identifiable {
     var id: String
+//    func checkId (id: String) -> Bool{
+//        return id != self.id ? true : false
+//    } -> works!
 }
 
 var someone = User(id: "1234")
