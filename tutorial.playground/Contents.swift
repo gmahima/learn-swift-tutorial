@@ -1,35 +1,25 @@
 import UIKit
 
-//protocols
-protocol Payable {
-    func calculateWages() -> Int
-}
 
-protocol NeedsTraining {
-    func study()
-}
+// extensions
 
-protocol HasVacation {
-    func takeVacation(days: Int)
-}
-
-protocol Employee: Payable, NeedsTraining, HasVacation {}
-
-struct StartupEmployee : Employee {
-    var salary: Int = 1000
-    func calculateWages() -> Int {
-        return 30*salary
+extension Int {
+    var isEven: Bool {
+        get {
+            if(self%2 == 0){
+                return true
+            }
+            return false
+        }
     }
-    func study() {
-        print("study study study")
-    }
-    func takeVacation(days: Int) {
-        print("Yay! I can relax for \(days) days.")
+    func square () -> Int {
+        return self*self
     }
 }
 
-var tatsumaki = StartupEmployee(salary: 10_000_000)
+var a = 1
 
-tatsumaki.calculateWages()
-tatsumaki.study()
-tatsumaki.takeVacation(days: 500)
+a.square()
+
+//a.isEven = false //Cannot assign to property: 'isEven' is a get-only property
+print(a.isEven)
