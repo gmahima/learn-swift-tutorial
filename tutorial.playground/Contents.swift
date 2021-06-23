@@ -1,17 +1,23 @@
 import UIKit
 
 
-//optionals
+//guard let
 
-var age: Int? = nil
-var str: String? = nil
-str = "hey"
-//if (let unwrapped = str) {
-//    print(unwrapped.count)
-//} errors
+enum Errror: Error {
+    case nilError(message: String)
+}
 
-if let unwrapped = str {
-    print(unwrapped.count)
-} // if let is ||r to if(val != nil ) + optional binding facility inside.
+func greet (_ greeting: String?) throws -> String{
+    guard let unwrapped = greeting else {
+        print("couldn't find greeting. Have a great day")
+        throw Errror.nilError(message: "couldn't find val in string")
+    }
+    return "\(unwrapped)! Have a great day"
+}
 
-
+do {
+    try(greet(nil))
+}
+catch {
+    print("some error occured \(error)")
+}
