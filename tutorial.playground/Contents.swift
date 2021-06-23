@@ -1,22 +1,23 @@
 import UIKit
 
 
-//protocol extensions
+//protocol extensions protocol oriented programming
 
+protocol Identifiable {
+    var id: String {get set}
+    func checkId(id: String) -> Bool
+    // it works even if checkId isn't mentioned here, but it acts as a constraint saying this method is compulsary.
+}
 
-var someArray : [String] = ["a", "a", "b"]
-
-var someSet  : Set<String> = ["x", "y"]
-
-extension Collection {
-    func summarize () {
-        print("there are \(count) of us")
-        
-        for i in self {
-            print(i)
-        }
+extension Identifiable {
+    func checkId (id: String) -> Bool{
+        return id==self.id ? true : false
     }
 }
 
-someSet.summarize()
-someArray.summarize()
+struct User: Identifiable {
+    var id: String
+}
+
+var someone = User(id: "1234")
+someone.checkId(id: "1234")
