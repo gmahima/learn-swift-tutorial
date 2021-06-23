@@ -1,29 +1,17 @@
 import UIKit
 
 
-//protocol extensions protocol oriented programming
+//optionals
 
-protocol Identifiable {
-    var id: String {get set}
-    func checkId(id: String) -> Bool
-    // it works even if checkId isn't mentioned here, but it acts as a constraint saying this method is compulsary.
-//    func checkId (id: String) -> Bool{
-//        return id==self.id ? true : false
-//    } error: protocol funcs must not have bodies.
-}
+var age: Int? = nil
+var str: String? = nil
+str = "hey"
+//if (let unwrapped = str) {
+//    print(unwrapped.count)
+//} errors
 
-extension Identifiable {
-    func checkId (id: String) -> Bool{
-        return id==self.id ? true : false
-    }
-} //it implements the checkId func here
+if let unwrapped = str {
+    print(unwrapped.count)
+} // if let is ||r to if(val != nil ) + optional binding facility inside.
 
-struct User: Identifiable {
-    var id: String
-//    func checkId (id: String) -> Bool{
-//        return id != self.id ? true : false
-//    } -> works!
-}
 
-var someone = User(id: "1234")
-someone.checkId(id: "1234")
