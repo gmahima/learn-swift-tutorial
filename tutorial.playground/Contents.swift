@@ -1,20 +1,29 @@
 import UIKit
 
 
-//failable initializer
+//type casting
 
-struct Person {
-    var id :String
+class Animal {
     
-    init? (id: String) {
-        if(id.count == 9) {
-            self.id = id
-        }
-        else {
-            return nil
-        }
+}
+class Fish: Animal {
+    func swim() {
+        print("splash splash")
+    }
+}
+class Dog: Animal {
+    func bark() {
+        print("Woof!")
     }
 }
 
-var a = Person(id: "asdf")
-var ax = Person(id: "123456789")
+let animals = [Fish(), Dog(), Dog(), Fish()]
+
+for a in animals {
+    if let dog = a as? Dog {
+        dog.bark()
+    }
+    else if let fish = a as? Fish {
+        fish.swim()
+    }
+}
