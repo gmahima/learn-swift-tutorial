@@ -1,10 +1,16 @@
 import UIKit
 
 
-//implicit unwrap
+//nil coalesing
 
-var x : Int!
-x = 5
-print(x) // optional(5) with warning: Coercion of implicitly unwrappable value of type 'Int?' to 'Any' does not unwrap optional
-let y = 5 + x
-print(y) // 10
+func user (_ id: Int) -> String? {
+    if(id == 1) {
+        return "Yaoyorozu"
+    }
+    else {
+        return nil
+    }
+}
+let x = user(24) ??  "Anonymous"
+let y = user(1) ?? "Anonymous"
+
