@@ -13,7 +13,7 @@ extension Identifiable {
     func checkId (id: String) -> Bool{
         return id==self.id ? true : false
     }
-}
+} //it implements the checkId func here
 
 struct User: Identifiable {
     var id: String
