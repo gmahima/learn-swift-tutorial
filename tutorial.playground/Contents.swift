@@ -7,6 +7,9 @@ protocol Identifiable {
     var id: String {get set}
     func checkId(id: String) -> Bool
     // it works even if checkId isn't mentioned here, but it acts as a constraint saying this method is compulsary.
+//    func checkId (id: String) -> Bool{
+//        return id==self.id ? true : false
+//    } error: protocol funcs must not have bodies.
 }
 
 extension Identifiable {
