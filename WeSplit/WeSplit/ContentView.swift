@@ -9,17 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Form {
-            Section {
-                Text("Hello, there!")
-                Text("Hello, there!")
-            }
-            Section {
-                Text("Hello, there!")
-                Text("Hello, there!")
-            }
-        } //Form is a struct confirming to View protocol. of type: Form<content> where content is something that conforms to View.
-        //Text is a struct conforming to equtable.
+        NavigationView{
+            Form {
+                Section {
+                    Text("Hello, there!")  
+                    Text("Hello, there!")
+                }
+                Section {
+                    Text("Hello, there!")
+                    Text("Hello, there!")
+                }
+            }.navigationBarTitle(Text("Swift UI "))
+        }
+        
     }
 }
 
