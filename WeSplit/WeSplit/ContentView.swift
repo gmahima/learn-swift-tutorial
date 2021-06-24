@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var tapCount :Int = 0
-    @State private var name: String = ""
+    let students = ["Harry", "Ron", "Hermione"]
+    @State private var pickedStudent = "Harry"
     var body: some View {
-        Form {
-            TextField("enter your name", text: $name)
-            Text("Your name is \(name) isn't it? Hmph! I am so clever!")
+
+            Picker("play with", selection: $pickedStudent){
+                ForEach(0..<students.count) {
+                    Text(self.students[$0])
+                }//closure
+            }// a closure
+
         }
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
