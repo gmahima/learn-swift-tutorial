@@ -8,20 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var tapCount :Int = 0
+    @State private var name: String = ""
     var body: some View {
-        NavigationView{
-            Form {
-                Section {
-                    Text("Hello, there!")  
-                    Text("Hello, there!")
-                }
-                Section {
-                    Text("Hello, there!")
-                    Text("Hello, there!")
-                }
-            }.navigationBarTitle(Text("Swift UI "))
+        Form {
+            TextField("enter your name", text: $name)
+            Text("Your name is \(name) isn't it? Hmph! I am so clever!")
         }
-        
     }
 }
 
