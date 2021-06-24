@@ -18,8 +18,10 @@ class Dog: Animal {
 }
 
 let animals = [Fish(), Dog(), Dog(), Fish()]
+let d = Dog() as Animal
 
 for a in animals {
+    print("type: \(type(of: a))")
     if let dog = a as? Dog {
         dog.bark()
         print(type(of: dog)) // converts type of animal to Dog (if possible)
